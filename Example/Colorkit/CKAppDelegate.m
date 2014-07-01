@@ -7,12 +7,19 @@
 //
 
 #import "CKAppDelegate.h"
+#import "CKColorsTableViewController.h"
 
 @implementation CKAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    CKColorsTableViewController *viewController = [[CKColorsTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.window.rootViewController = viewController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 							

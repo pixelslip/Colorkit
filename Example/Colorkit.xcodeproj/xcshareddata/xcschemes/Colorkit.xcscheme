@@ -37,6 +37,17 @@
                BlueprintName = "Tests"
                ReferencedContainer = "container:Colorkit.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "InitialSpecsSpec/these_will_fail_can_do_maths">
+               </Test>
+               <Test
+                  Identifier = "InitialSpecsSpec/these_will_fail_can_read">
+               </Test>
+               <Test
+                  Identifier = "InitialSpecsSpec/these_will_fail_will_wait_and_fail">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
