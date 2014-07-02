@@ -63,123 +63,138 @@ Create a color with an array of rgba values like @[@255,@120, @43, @0.5]
 
 **+(instancetype)colorWithHSB:(NSArray *)hsbArray**
 
-Create a color with an array of hsb values like @[360,80,54]
+Create a color with an array of hsb values like @[@360,@80,@54]
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>UIColor *redColor = [UIColor colorWithHSB:@[@0, @100, @100]];
 </code></pre>
 
 **+(instancetype)colorWithHSBA:(NSArray *)hsbaArray**
 
-Create a color with an array of hsba values like @[360,80,54,0.5]
+Create a color with an array of hsba values like @[@360,@80,@54,@0.5]
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>UIColor *redColor = [UIColor colorWithHSB:@[@0, @100, @100, @1]];
 </code></pre>
 
+
+###Color channel functions
 
 **-(NSString *)getHexString**
 
 Get a HEX String from a Color
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[redColor getHexString];
+// @"#FF0000"
 </code></pre>
 
 **-(NSArray *)getRGBAArray**
 
 Get an Array of RGBA Numbers from a Color
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[redColor getRGBAArray]; 
+// @[@255, @0, @0, @1]
 </code></pre>
 
 **-(NSArray *)getHSBAArray**
 
 Get an Array of HSBA Numbers from a Color
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[redColor getHSBAArray];
+// @[@360, @100, @100, @1]
 </code></pre>
 
 **-(CGFloat)getRed**
 
 Get the red value of a Color
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[redColor getRed];
+// 255.0
 </code></pre>
 
 **-(CGFloat)getGreen**
 
 Get the green value of a Color
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[redColor getGreen];
+// 0.0
 </code></pre>
 
 **-(CGFloat)getBlue**
 
 Get the blue value of a Color
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[redColor getBlue];
+// 0.0
 </code></pre>
 
 **-(CGFloat)getHue**
 
 Get the hue value of a Color
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[redColor getHue];
+// 360.0
 </code></pre>
 
 **-(CGFloat)getSaturation**
 
 Get the saturation value of a Color
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[redColor getSaturation];
+// 100.0
 </code></pre>
 
 **-(CGFloat)getBrightness**
 
 Get the brightness value of a Color
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[redColor getBrightness];
+// 100.0
 </code></pre>
 
 **-(CGFloat)getAlpha**
 
 Get the alpha value of a Color
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[redColor getAlpha];
+// 1.0
 </code></pre>
 
+
+###Color operation functions
 
 **-(instancetype)saturateColor:(CGFloat)amount**
 
 Saturate a color with a pourcentage value
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[baseColor saturateColor:20.0];
 </code></pre>
 
 **-(instancetype)desaturateColor:(CGFloat)amount**
 
-Desaturate a color with a pourcentage value (0-1)
+Desaturate a color with a pourcentage value
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[baseColor desaturateColor:20.0];
+// == [baseColor saturateColor:-20.0];
 </code></pre>
 
 **-(instancetype)lightenColor:(CGFloat)amount**
 
 Light a color with a pourcentage value
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[baseColor lightenColor:20.0];
 </code></pre>
 
 **-(instancetype)darkenColor:(CGFloat)amount**
 
 Saturate a color with a pourcentage value
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[baseColor darkenColor:20.0];
 </code></pre>
 
 **-(instancetype)spinColor:(CGFloat)angle**
 
 Spin a color with a degre value
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[baseColor spinColor:120.0];
 </code></pre>
 
 
@@ -187,56 +202,60 @@ Spin a color with a degre value
 
 Return the color desaturate. Same as desaturateColor:100
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[baseColor greyscaleColor];
 </code></pre>
 
+
+###Color blending functions
 
 **+(instancetype)blendingColorsWithMultiply:(id)firstColor secondColor:(id)secondColor**
 
 Blending two colors with Multiply
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[blendingColorsWithMultiply:[UIColor red] secondColor:[UIColor blue]];
 </code></pre>
 
 **+(instancetype)blendingColorsWithScreen:(id)firstColor secondColor:(id)secondColor**
 
 Blending two colors with Screen
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[blendingColorsWithScreen:[UIColor red] secondColor:[UIColor blue]];
 </code></pre>
 
 **+(instancetype)blendingColorsWithOverlay:(id)firstColor secondColor:(id)secondColor**
 
 Blending two colors with Overlay
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[blendingColorsWithOverlay:[UIColor red] secondColor:[UIColor blue]];
 </code></pre>
 
 **+(instancetype)blendingColorsWithSoftlight:(id)firstColor secondColor:(id)secondColor**
 
 Blending two colors with Softlight
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[blendingColorsWithSoftlight:[UIColor red] secondColor:[UIColor blue]];
 </code></pre>
 
 **+(instancetype)blendingColorsWithHardlight:(id)firstColor secondColor:(id)secondColor**
 
 Blending two colors with Hardlight
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[blendingColorsWithHardlight:[UIColor red] secondColor:[UIColor blue]];
 </code></pre>
 
 **+(instancetype)blendingColorsWithDifference:(id)firstColor secondColor:(id)secondColor**
 
 Blending two colors with Difference
 
-<pre><code>UIColor *redColor = [UIColor];
+<pre><code>[blendingColorsWithDifference:[UIColor red] secondColor:[UIColor blue]];
 </code></pre>
 
 
-**+(instancetype)blendingColorsWithExclusion:(id)firstColor secondColor:(id)secondColor**Blending two colors with Exclusion
+**+(instancetype)blendingColorsWithExclusion:(id)firstColor secondColor:(id)secondColor**
 
-<pre><code>UIColor *redColor = [UIColor];
+Blending two colors with Exclusion
+
+<pre><code>[blendingColorsWithExclusion:[UIColor red] secondColor:[UIColor blue]];
 </code></pre>
 
 
