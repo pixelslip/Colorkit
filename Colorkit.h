@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, ColorBlend) {
 +(instancetype)colorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha;
 
 /**
- Create a color with an array of rgb values like @[255,120,43]
+ Create a color with an array of rgb values like @[@255,@20,@43]
  
  @param rgbArray Array of 3 numbers red(0-255) green(0-255) blue(0-255)
  @return UIColor
@@ -49,7 +49,7 @@ typedef NS_ENUM(NSInteger, ColorBlend) {
 +(instancetype)colorWithRGB:(NSArray *)rgbArray;
 
 /**
- Create a color with an array of rgba values like @[255,120,43,0.5]
+ Create a color with an array of rgba values like @[@255,@120,@43,@0.5]
  
  @param rgbaArray Array of 4 numbers red(0-255) green(0-255) blue(0-255) alpha(0-1)
  @return UIColor
@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, ColorBlend) {
 +(instancetype)colorWithRGBA:(NSArray *)rgbaArray;
 
 /**
- Create a color with an array of hsb values like @[360,80,54]
+ Create a color with an array of hsb values like @[@360,@80,@54]
  
  @param hsbArray Array of 3 numbers hue(0-360) saturation(0-100) brightness(0-100)
  @return UIColor
@@ -65,7 +65,7 @@ typedef NS_ENUM(NSInteger, ColorBlend) {
 +(instancetype)colorWithHSB:(NSArray *)hsbArray;
 
 /**
- Create a color with an array of hsba values like @[360,80,54,0.5]
+ Create a color with an array of hsba values like @[@360,@80,@54,@0.5]
  
  @param hsbaArray Array of 4 numbers hue(0-360) saturation(0-100) brightness(0-100) alpha(0-1)
  @return UIColor
