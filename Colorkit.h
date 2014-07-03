@@ -155,7 +155,7 @@ typedef NS_ENUM(NSInteger, ColorBlend) {
 -(instancetype)saturateColor:(CGFloat)amount;
 
 /**
- Desaturate a color with a pourcentage value (0-1)
+ Desaturate a color with a pourcentage value
  
  @param amount float value (0-100)
  @return UIColor
