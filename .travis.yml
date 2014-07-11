@@ -1,3 +1,3 @@
 language: objective-c
-xcode_project: Example/Colorkit.xcworkspace
+xcode_workspace: Example/Colorkit.xcworkspace
 xcode_scheme: Example/Tests
