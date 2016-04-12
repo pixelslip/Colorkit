@@ -267,6 +267,44 @@
     return [self colorBlend:ColorBlendExclusion first:firstColor second:secondColor];
 }
 
+#pragma mark - Special Effects
++ (UIColor*)contrastLumaColor:(UIColor*)color threshold:(CGFloat)threshold{
+	size_t countComponents = CGColorGetNumberOfComponents(color.CGColor);
+	const CGFloat *components = CGColorGetComponents(color.CGColor);
+	//compute relative luminance
+	CGFloat relativeLuminance = 0;
+	if (countComponents == 4)
+		relativeLuminance = 1 - (0.2126f * components[0] + 0.7152f * components[1] + 0.0722f * components[2]);
+	else if (countComponents == 2)
+		relativeLuminance = 1 - (0.2126f * components[0] + 0.7152f * components[0] + 0.0722f * components[0]);
+
+	if (relativeLuminance >= threshold) {
+		return [UIColor whiteColor];
+	} else {
+		return [UIColor blackColor];
+	}
+}
+
++ (UIColor *)colorWithLuminance:(CGFloat)luminance withA:(CGFloat)a withB:(CGFloat)b{
+	CGFloat saturation = sqrt(a * a + b * b);
+	CGFloat hue = atan(b/a);
+	return [UIColor colorWithHue:hue saturation:saturation brightness:luminance alpha:1];
+}
+
++ (instancetype)blendingColorsWithAlphaCompositing:(UIColor*)firstColor withColor:(UIColor*)secondColor{
+	CGFloat r1, g1, b1, a1;
+	CGFloat r2, g2, b2, a2;
+	[firstColor getRed:&r1 green:&g1 blue:&b1 alpha:&a1];
+	[secondColor getRed:&r2 green:&g2 blue:&b2 alpha:&a2];
+
+	CGFloat blendedAlpha = a1 + a2*(1 - a1);
+	CGFloat blendedRedComponent = (r1 * a1 + r2*a2*(1 - a1) ) / blendedAlpha;
+	CGFloat blendedGreenComponent = (g1 * a1 + g2*a2*(1 - a1)) / blendedAlpha;
+	CGFloat blendedBlueComponent = (b1 * a1 + b2*a2*(1 - a1)) / blendedAlpha;
+
+	return [UIColor colorWithRed:blendedRedComponent green:blendedGreenComponent blue:blendedBlueComponent alpha:blendedAlpha];
+}
+
 
 #pragma mark - Privates methods
 +(instancetype)colorWithR:(CGFloat)red G:(CGFloat)green B:(CGFloat)blue A:(CGFloat)alpha

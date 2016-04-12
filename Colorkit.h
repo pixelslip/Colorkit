@@ -258,5 +258,37 @@ typedef NS_ENUM(NSInteger, ColorBlend) {
  */
 +(instancetype)blendingColorsWithExclusion:(id)firstColor secondColor:(id)secondColor;
 
+/**
+ Blending two colors with alpha compositing
+
+ @param firstColor UIColor
+ @param secondColor UIColor
+ @return UIColor
+ @discussion There are standard alpha blending way https://en.wikipedia.org/wiki/Alpha_compositing 
+ */
++ (instancetype)blendingColorsWithAlphaCompositing:(UIColor*)firstColor withColor:(UIColor*)secondColor;
+
+#pragma mark - Special Effects
+
+/**
+ Create contrasting color based on relative luminance
+
+ @param color UIColor
+ @param threshold CGFLoat - threshold of relative luminance
+ @return UIColor - black or white color
+ @discussion Inspired and followed by https://www.w3.org/TR/WCAG20-TECHS/G18.html
+ */
++ (instancetype)contrastLumaColor:(UIColor*)color threshold:(CGFloat)threshold;
+
+/**
+ Convenient method for LAB color space
+
+ @param luminance UIColor
+ @param a UIColor
+ @param b UIColor
+ @return UIColor
+ */
++ (instancetype)colorWithLuminance:(CGFloat)luminance withA:(CGFloat)a withB:(CGFloat)b;
+
 
 @end
